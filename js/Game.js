@@ -1,12 +1,12 @@
 class Game {
   constructor() {
-    this.resetTitle = createElement("h2");
-    this.resetButton = createButton("");
+    this.resetTitle = createElement("h2"); //titulo resetar
+    this.resetButton = createButton(""); //botao de resetar
 
-    this.leadeboardTitle = createElement("h2");
+    this.leadeboardTitle = createElement("h2"); //titulo placar
 
-    this.leader1 = createElement("h2");
-    this.leader2 = createElement("h2");
+    this.leader1 = createElement("h2"); //dados lider 1 rank, nome, ponto
+    this.leader2 = createElement("h2"); //dados lider 1 rank, nome, ponto
   }
 
   getState() {
@@ -71,7 +71,7 @@ class Game {
 
     if (allPlayers !== undefined) {
       image(track, 0, -height * 5, width, height * 6);
-
+      //função para exibir dados do placar
       this.showLeaderboard();
 
       //índice da matriz
@@ -109,44 +109,17 @@ class Game {
   showLeaderboard() {
     var leader1, leader2;
     var players = Object.values(allPlayers);
-    if (
-      (players[0].rank === 0 && players[1].rank === 0) ||
-      players[0].rank === 1
-    ) {
-      // &emsp;    Essa etiqueta é usada para exibir quatro espaços.
-      leader1 =
-        players[0].rank +
-        "&emsp;" +
-        players[0].name +
-        "&emsp;" +
-        players[0].score;
+    /*allplayers -  {player1: {…}, player2: {…}} 
+    player1: {name: 'ta', positionX: 668, positionY: 0, rank: 0, score: 0}
+    player2: {name: 'joao', positionX: 868, positionY: 0, rank: 0, score: 0}*/
 
-      leader2 =
-        players[1].rank +
-        "&emsp;" +
-        players[1].name +
-        "&emsp;" +
-        players[1].score;
-    }
-
-    if (players[1].rank === 1) {
-      leader1 =
-        players[1].rank +
-        "&emsp;" +
-        players[1].name +
-        "&emsp;" +
-        players[1].score;
-
-      leader2 =
-        players[0].rank +
-        "&emsp;" +
-        players[0].name +
-        "&emsp;" +
-        players[0].score;
-    }
-
-    this.leader1.html(leader1);
-    this.leader2.html(leader2);
+    /*var players - [0{…}, 1{…}]
+    0 : {name: 'ta', positionX: 668, positionY: 0, rank: 0, score: 0}
+    1 : {name: 'joao', positionX: 868, positionY: 0, rank: 0, score: 0}
+    */
+    // &emsp; Essa etiqueta é usada para exibir quatro espaços.
+    // criar configuração para exibir o placar rank, nome, pontos
+       
   }
 
   handlePlayerControls() {
@@ -154,5 +127,6 @@ class Game {
       player.positionY += 10;
       player.update();
     }
+    //crie o movimento para a direira e para a esquerda
   }
 }
