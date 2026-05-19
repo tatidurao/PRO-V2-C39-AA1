@@ -104,7 +104,9 @@ class Game {
     }
   }
 
-  handleResetButton() {}
+  handleResetButton() {
+    /*Criar o Reset*/
+  }
 
   showLeaderboard() {
     var leader1, leader2;
@@ -127,6 +129,14 @@ class Game {
       player.positionY += 10;
       player.update();
     }
-    //crie o movimento para a direira e para a esquerda
+    /*VAMOS LIMITAR A AREA DE MOVIMENTO*/
+    if (keyIsDown(LEFT_ARROW)) {
+      player.positionX -= 10;
+      player.update();
+    }
+    if (keyIsDown(RIGHT_ARROW)) {
+      player.positionX += 10;
+      player.update();
+    }
   }
 }
